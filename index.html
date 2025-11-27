@@ -278,4 +278,133 @@
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பழையகோட்டை பட்டக்காரர் நாட்டுப்பாடலும் பூர்வீக பட்டயமும்</p>
-                        <p class="text-sm text-gray-600">ஆசிரியர்: கு.அரு
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கு.அருணாசலக்கவுண்டர்</p>
+                    </div>
+                    <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
+                        <p class="text-lg font-semibold text-gray-800">எல்.டி.சாமிக்கண்ணுப்பிள்ளை வாழ்வும் பணியும்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கு.அருணாசலக்கவுண்டர்</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section - Changed background to Emerald 50 -->
+    <section id="about" class="bg-emerald-50 py-16 sm:py-24">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <!-- Heading - Changed from Indigo 900 to Emerald 900 -->
+            <h2 class="text-4xl font-bold text-emerald-900 mb-8">
+                எங்கள் நோக்கம்
+            </h2>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                'கொங்கு மண்டல ஆய்வு மையம்' என்பது, பழைமை வாய்ந்த கொங்கு நாட்டின் கலாசாரம், வரலாறு, சமூகப் பழக்கவழக்கங்கள் மற்றும் இலக்கியங்களை மீட்டுருவாக்கம் செய்வதற்கும், அவற்றை அடுத்த தலைமுறைக்குக் கொண்டு சேர்ப்பதற்கும் உறுதிபூண்டுள்ளது. அரிய கையெழுத்துப் பிரதிகள் மற்றும் வாய்வழி வரலாறுகளைச் சேகரித்து, அவற்றை நம்பகமான ஆய்வு நூல்களாக வெளியிடுவதன் மூலம், தமிழ் அறிவுலகிற்குப் பங்களிப்பதை நாங்கள் இலக்காகக் கொண்டுள்ளோம்.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer - Changed from Indigo 900 to Emerald 700 -->
+    <footer id="contact" class="bg-emerald-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- Center Info - Updated name and changed accent color to Lime 300 -->
+                <div>
+                    <h4 class="text-xl font-semibold text-lime-300 mb-4">கொங்கு மண்டல ஆய்வு மையம்</h4>
+                    <p class="text-gray-300">வரலாற்று ஆவணப்படுத்துதல் மற்றும் பண்பாட்டு வெளியீடுகளின் தாயகம்.</p>
+                </div>
+
+                <!-- Contact Details - UPDATED with new phone and email -->
+                <div>
+                    <!-- Heading accent color changed to Lime 300 -->
+                    <h4 class="text-xl font-semibold text-lime-300 mb-4">தொடர்பு கொள்ள</h4>
+                    
+                    <p class="text-gray-300">
+                        ரவி அச்சகம், VRV Dental Clinic மாடியில்,<br>
+                        2.புறவழிச்சாலை, மத்திய பேருந்து நிலையம் வடபுறம்,<br>
+                        உடுமலைப்பேட்டை - 642 126.
+                    </p>
+                    <!-- New Contact Information -->
+                    <p class="text-gray-300 mt-3">அழைப்பு எண்: <a href="tel:+919943978256" class="font-medium hover:text-white transition duration-150">99439 78256</a></p>
+                    <p class="text-gray-300">மின்னஞ்சல்: <a href="mailto:Konguregionorg1@gmail.com" class="font-medium hover:text-white transition duration-150">Konguregionorg1@gmail.com</a></p>
+                </div>
+
+                <!-- Quick Links - Changed accent color to Lime 300 -->
+                <div>
+                    <h4 class="text-xl font-semibold text-lime-300 mb-4">விரைவு இணைப்புகள்</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-300 hover:text-lime-300 transition duration-150">எங்களைப் பற்றி</a></li>
+                        <li><a href="#books" class="text-gray-300 hover:text-lime-300 transition duration-150">அனைத்து நூல்களும்</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright - Changed border color to Emerald 600 -->
+            <div class="mt-8 pt-6 border-t border-emerald-600 text-center text-gray-400 text-sm">
+                &copy; 2025 கொங்கு மண்டல ஆய்வு மையம். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Toggling Book List -->
+    <script>
+        function toggleBookList() {
+            const container = document.getElementById('books-container');
+            const button = document.getElementById('toggle-books-btn');
+            const booksSection = document.getElementById('books'); // Get the parent section
+            const isHidden = container.classList.contains('hidden-list');
+
+            if (isHidden) {
+                // Show the list
+                container.classList.remove('hidden-list');
+                container.style.height = container.scrollHeight + 'px'; // Set height for smooth transition
+                container.style.opacity = '1';
+                button.textContent = 'பட்டியலை மறைக்க';
+                
+                // Add full padding to the section when content is visible
+                booksSection.classList.remove('py-4');
+                booksSection.classList.add('py-16', 'sm:py-24'); 
+                
+                // Scroll smoothly to the books section after a slight delay
+                setTimeout(() => {
+                    document.getElementById('books').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+
+            } else {
+                // Hide the list
+                container.style.height = container.scrollHeight + 'px';
+                // Trigger reflow to ensure CSS transition is applied
+                requestAnimationFrame(() => {
+                    container.style.height = '0';
+                    container.style.opacity = '0';
+                });
+                
+                // Once transition is complete, cleanup
+                setTimeout(() => {
+                    container.classList.add('hidden-list');
+                    container.style.height = ''; 
+                    
+                    // Set minimal padding back to the section when content is hidden
+                    booksSection.classList.remove('py-16', 'sm:py-24');
+                    booksSection.classList.add('py-4');
+                }, 500); // Should match CSS transition duration
+
+                button.textContent = 'நூல்களின் முழுப் பட்டியல்';
+            }
+        }
+
+        // Initialize dynamic height calculation after the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('books-container');
+            if (container) {
+                // Force initial calculation and setting of the hidden state
+                container.style.height = 'auto'; // Temporarily reset to calculate scrollHeight accurately
+                container.classList.add('hidden-list'); // Ensure it starts hidden
+                container.style.height = ''; // Reset height style
+                container.style.opacity = ''; // Reset opacity style
+            }
+        });
+    </script>
+
+</body>
+</html>
+
