@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title -->
     <title>கொங்கு மண்டல ஆய்வு மையம்</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,14 +12,28 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f7f7; /* Light background */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
         /* Styling for the book list items - Changed to Emerald 700 (#047857) */
         .book-item {
             border-left: 4px solid #047857;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
         }
         .book-item:hover {
             background-color: #f0fdf4; /* Very light emerald on hover */
+            transform: translateX(5px); /* Slight movement to the right on hover */
+        }
+        /* Added class for smooth transition when showing/hiding */
+        .transition-height {
+            transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            overflow: hidden;
+        }
+        /* Styling for the hidden state */
+        .hidden-list {
+            height: 0;
+            opacity: 0;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
         }
     </style>
 </head>
@@ -54,22 +67,23 @@
             <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                 கொங்கு மண்டலம் சார்ந்த வரலாறு, பண்பாடு மற்றும் இலக்கியங்களை ஆவணப்படுத்தவும், ஆய்வுகளை ஊக்குவிக்கவும் தொடங்கப்பட்ட ஒரு பதிப்பகம் மற்றும் ஆய்வு நிறுவனம்.
             </p>
-            <!-- Button - Changed from Amber 500/600 to Lime 600/700 -->
-            <a href="#books" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-lime-600 hover:bg-lime-700 shadow-lg transform hover:scale-105 transition duration-300">
+            <!-- Button - Now triggers JavaScript to toggle the list -->
+            <button id="toggle-books-btn" onclick="toggleBookList()" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-lime-600 hover:bg-lime-700 shadow-lg transform hover:scale-105 transition duration-300">
                 நூல்களின் முழுப் பட்டியல்
-            </a>
+            </button>
         </div>
     </section>
 
-    <!-- Books Published Section -->
+    <!-- Books Published Section - Contains the list, initially hidden via JS logic -->
     <section id="books" class="py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Heading - Changed from Indigo 900 to Emerald 900 -->
             <h2 class="text-4xl font-bold text-emerald-900 mb-12 text-center">
-                எங்கள் வெளியீடுகள் (முழுப் பட்டியல்)
+                எங்கள் வெளியீடுகள்
             </h2>
 
-            <div class="bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
+            <!-- This wrapper is initially hidden. JS will toggle 'hidden-list' class. -->
+            <div id="books-container" class="transition-height hidden-list bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
                 
                 <!-- Category 1: நீர் மேலாண்மை மற்றும் சுற்றுச்சூழல் நூல்கள் - Heading color changed to Emerald 700 -->
                 <h3 class="text-2xl sm:text-3xl font-bold text-emerald-700 border-b-2 border-red-200 pb-2 mb-6">
@@ -79,40 +93,40 @@
                     <!-- Books by Udumalai Ravi on Water/Environment -->
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">அமராவதி, நொய்யல், பவானி</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                      <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பரம்பிக்குளம் ஆழியாறு திட்டம்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">நீர் மேலாண்மையில் தமிழர்கள்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பாலைவனமாக்கப்படும் தமிழ்நாடு, சீமைக்கருவேலமரங்களை ஒழிப்போம், நியூட்ரினோ திட்டம் தவிர்ப்போம்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">உயர்மின்கோபுரம் தவிர்ப்போம் விவசாயம் காப்போம்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி, வழக்கறிஞர் ஈசன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி, வழக்கறிஞர் ஈசன்</p>
                     </div>
                     <!-- Books by Kambam Abbas & Er. Ilangovan -->
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">முல்லைப்பெரியாறு தொடரும் தொல்லைகள், கம்பம் பள்ளத்தாக்கு, வாவேர் பள்ளிவாசல்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: கம்பம் அப்பாஸ்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கம்பம் அப்பாஸ்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">தண்ணீர் தண்ணீர்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: பொறியாளர் இளங்கோவன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: பொறியாளர் இளங்கோவன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">RIVER BASINS DEVELOPMENT AND ENVIRONMENT MANAGEMENT (ஆங்கில நூல்)</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: Er. R. ILANGOVAN</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: Er. R. ILANGOVAN</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">சூழல் பாதுகாப்புடன் வளர்ச்சித் திட்டங்கள், கழிவு நீரும் எதிர்காலமும், மாசடைந்த தமிழக அணைகள்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: பொறியாளர் இளங்கோவன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: பொறியாளர் இளங்கோவன்</p>
                     </div>
                 </div>
 
@@ -123,31 +137,31 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">வீரமாத்தி அம்மன் (முந்தைய குறிப்பிலிருந்து சேர்க்கப்பட்டது)</p>
-                        <p class="text-sm text-indigo-600">ஆய்வு நூல்</p>
+                        <p class="text-sm text-gray-600">ஆய்வு நூல்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">கொங்கு குல வரலாறு, திராவிட இயக்கமும் கொங்கு வேளாளரும், கொழுமம்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">நீர் மேலாண்மை அகராதி, பஞ்சபூத அகராதி, கொங்கு வட்டார வழக்குச் சொல்லகராதி</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">கொங்கு அகராதி (மேம்படுத்தப்பட்ட மறுபதிப்பு)</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பொன்னர்-சங்கர் - தங்காள் வாழ்க்கை வரலாறு</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: மீரா A. பொன்னுசாமி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: மீரா A. பொன்னுசாமி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பொன்னர்சங்கர் காவியம் (ஓலைச்சுவடியிலிருந்து தொகுத்தது)</p>
-                        <p class="text-sm text-indigo-600">தொகுத்தவர்: தூரன் சு. வேலுச்சாமி</p>
+                        <p class="text-sm text-gray-600">தொகுத்தவர்: தூரன் சு. வேலுச்சாமி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">மேற்குத் தொடர்ச்சிமலை பாறை ஓவியங்கள்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: தென்கொங்கு சதாசிவம்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: தென்கொங்கு சதாசிவம்</p>
                     </div>
                 </div>
 
@@ -158,27 +172,27 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">இயற்கை வேளாண்மைக்கு முதலுதவி பெட்டி, தேங்காயும் ஒரு சில டாக்டர்களும்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: மது. இராமகிருஷ்ணன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: மது. இராமகிருஷ்ணன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">எல்லோருக்கும் இயற்கை வேளாண்மை, இரண்டாம் கடவுள், தினமும் திருந்துவோம்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: மது. இராமகிருஷ்ணன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: மது. இராமகிருஷ்ணன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">மண்புழு</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: பூலாங்கிணர் செல்வராஜ்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: பூலாங்கிணர் செல்வராஜ்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">இன்பமான வாழ்விற்கு இயற்கை வேளாண்மை</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: அந்தியூர் செல்வராஜ்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: அந்தியூர் செல்வராஜ்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">முழு மதுவிலக்கு அதுவே நமது இலக்கு</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பி.டி.விதை பேராபத்து</p>
-                        <p class="text-sm text-indigo-600">வெளியீடு: கொங்கு மண்டல ஆய்வு மையம், உடுமலை</p>
+                        <p class="text-sm text-gray-600">வெளியீடு: கொங்கு மண்டல ஆய்வு மையம், உடுமலை</p>
                     </div>
                 </div>
                 
@@ -189,35 +203,35 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">புலவர் செ.ராசு வாழ்வும் பணியும்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: முனைவர். கு.மகுடீஸ்ரவன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: முனைவர். கு.மகுடீஸ்ரவன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">கண்ணகி அந்தாதி</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: பழனியப்பன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: பழனியப்பன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">தண்ணீர் மனிதன் இராஜேந்தர்சிங்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: கா.கருமலையப்பன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கா.கருமலையப்பன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">உலகப் பொதுமறையில் உழவு</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: நல்லாசிரியர். தே.அன்புச்செல்வன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: நல்லாசிரியர். தே.அன்புச்செல்வன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">இலக்கியங்களின் இலக்குகள்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: முனைவர் க.தனலட்சுமி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: முனைவர் க.தனலட்சுமி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">தீரன் சின்னமலை வில்லுப்பாட்டு, கொங்குநாடும் கால்நடைகளும்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">முத்துக்குவியல்கள், சிந்தனை ஊற்று (கவிதை நூல்கள்)</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: அனிதா வெங்கடேஷ்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: அனிதா வெங்கடேஷ்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">எஞ்சிய முத்துக்கள், விஷ ஊற்று கவிதைகள், காலத்துளிகள், எண்ணத்தின் வண்ணத்துப்பூச்சி (கவிதை நூல்கள்)</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்கள்: இளங்கோவன், சுரேசுகுமாரன், பிரியா நல்லதம்பி, G.வேலு</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்கள்: இளங்கோவன், சுரேசுகுமாரன், பிரியா நல்லதம்பி, G.வேலு</p>
                     </div>
                 </div>
 
@@ -228,43 +242,43 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">கோவை கிழார் படைப்புகள் (3 பாகங்கள்)</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: உடுமலை ரவி</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: உடுமலை ரவி</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">ஆராய்ச்சிக்கட்டுரைகள், வெள்ளிமலை வெண்பா, பழனி ஆண்டவர் சந்தக்கும்மி</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்கள்: கோவை கிழார், பேரூர் ஆதீனம், கொங்கு மண்டல ஆய்வு மையம்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்கள்: கோவை கிழார், பேரூர் ஆதீனம், கொங்கு மண்டல ஆய்வு மையம்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">கர்ண சதுட்டை</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்கள்: தூரன் வேலுச்சாமி, பேரூர் ஆதீனம், கொங்கு மண்டல ஆய்வு மையம்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்கள்: தூரன் வேலுச்சாமி, பேரூர் ஆதீனம், கொங்கு மண்டல ஆய்வு மையம்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பனை எழுபது, தால விலாசம், புலவர் குழந்தை, தீரன் சின்னமலை, சோழீச்சுர தேவர் வரலாறு</p>
-                        <p class="text-sm text-indigo-600">மறுபதிப்பு நூல்கள்</p>
+                        <p class="text-sm text-gray-600">மறுபதிப்பு நூல்கள்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">திருநணா சிலேடை வெண்பா</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: புலவர் குழந்தை</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: புலவர் குழந்தை</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">மாநில சுயாட்சி</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: எஸ்.ஜே.சாதிக் பாட்சா</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: எஸ்.ஜே.சாதிக் பாட்சா</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">ஈழ மண்டல சதகம், ஸ்ரீ இராம சரிதம்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்கள்: கி.கோபாலசுவாமி நாயுடு மற்றும் பிற மறுபதிப்புகள்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்கள்: கி.கோபாலசுவாமி நாயுடு மற்றும் பிற மறுபதிப்புகள்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">கொங்கு சமுதாயமும் முன்னேற்றமும்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: கோவை செழியன்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கோவை செழியன்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">பழையகோட்டை பட்டக்காரர் நாட்டுப்பாடலும் பூர்வீக பட்டயமும்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: கு.அருணாசலக்கவுண்டர்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கு.அருணாசலக்கவுண்டர்</p>
                     </div>
                     <div class="book-item p-4 rounded-lg bg-gray-50 flex flex-col justify-center">
                         <p class="text-lg font-semibold text-gray-800">எல்.டி.சாமிக்கண்ணுப்பிள்ளை வாழ்வும் பணியும்</p>
-                        <p class="text-sm text-indigo-600">ஆசிரியர்: கு.அருணாசலக்கவுண்டர்</p>
+                        <p class="text-sm text-gray-600">ஆசிரியர்: கு.அருணாசலக்கவுண்டர்</p>
                     </div>
                 </div>
 
@@ -306,8 +320,8 @@
                         உடுமலைப்பேட்டை - 642 126.
                     </p>
                     <!-- New Contact Information -->
-                    <p class="text-gray-300 mt-3">அழைப்பு எண்: <span class="font-medium">99439 78256</span></p>
-                    <p class="text-gray-300">மின்னஞ்சல்: <span class="font-medium">Konguregionorg1@gmail.com</span></p>
+                    <p class="text-gray-300 mt-3">அழைப்பு எண்: <a href="tel:+919943978256" class="font-medium hover:text-white transition duration-150">99439 78256</a></p>
+                    <p class="text-gray-300">மின்னஞ்சல்: <a href="mailto:Konguregionorg1@gmail.com" class="font-medium hover:text-white transition duration-150">Konguregionorg1@gmail.com</a></p>
                 </div>
 
                 <!-- Quick Links - Changed accent color to Lime 300 -->
@@ -326,6 +340,53 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Toggling Book List -->
+    <script>
+        function toggleBookList() {
+            const container = document.getElementById('books-container');
+            const button = document.getElementById('toggle-books-btn');
+            const isHidden = container.classList.contains('hidden-list');
+
+            if (isHidden) {
+                // Show the list
+                container.classList.remove('hidden-list');
+                container.style.height = container.scrollHeight + 'px'; // Set height for smooth transition
+                container.style.opacity = '1';
+                button.textContent = 'பட்டியலை மறைக்க';
+                
+                // Scroll smoothly to the books section
+                document.getElementById('books').scrollIntoView({ behavior: 'smooth' });
+
+            } else {
+                // Hide the list
+                container.style.height = container.scrollHeight + 'px';
+                // Trigger reflow to ensure CSS transition is applied
+                requestAnimationFrame(() => {
+                    container.style.height = '0';
+                    container.style.opacity = '0';
+                });
+                
+                // Once transition is complete, re-add the hidden class
+                setTimeout(() => {
+                    container.classList.add('hidden-list');
+                    container.style.height = ''; // Reset height for future use
+                }, 500); // Should match CSS transition duration
+
+                button.textContent = 'நூல்களின் முழுப் பட்டியல்';
+            }
+        }
+
+        // Initialize dynamic height calculation after the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('books-container');
+            // Remove initial height/opacity settings after DOM content load to enable proper hiding
+            if (container) {
+                container.style.height = 'auto'; // Temporarily reset to calculate scrollHeight accurately
+                container.classList.add('hidden-list'); // Ensure it starts hidden
+            }
+        });
+    </script>
 
 </body>
 </html>
